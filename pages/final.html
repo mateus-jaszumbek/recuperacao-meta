@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../Js/script.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <a href="../Index.html">home</a>
+        <p>
+            Perfeito! Após analisar sua situação, vejo que as chances de sucesso na recuperação imediata da conta são
+            boas, aproximadamente 87% 📈
+        </p>
+
+        <p>
+            Agora me informe o seu nome, o melhor E-Mail e Whatsapp para que eu possa te contactar se caso tenha algum
+            problema durante a recuperação:
+        </p>
+
+        <form action="https://formsubmit.co/ajax/mateusjaszumbek@hotmail.com" method="POST" data-form
+            class="formulario-paraenvio" id="myForm">
+            <div>
+                <label for="name">Seu Nome</label>
+                <input type="text" id="name" required>
+            </div>
+            <div>
+                <label for="email">Seu e-mail</label>
+                <input type="email" id="email" required>
+            </div>
+            <div>
+                <label for="text">Seu WhatsApp</label>
+                <input type="text" id="celular" required>
+            </div>
+            <div>
+                <input type="submit" id="enviar" value="Enviar">
+            </div>
+        </form>
+    </div>
+
+</body>
+<script>
+    const celularInput = document.getElementById('celular');
+
+    celularInput.addEventListener('input', function () {
+        let celular = this.value.replace(/\D/g, ''); // Remove caracteres não numéricos
+        if (celular.length > 0) {
+            celular = celular.replace(/^(\d{2})(\d)/g, '($1) $2');
+            if (celular.length > 11) {
+                celular = celular.replace(/(\d{5})(\d)/, '$1-$2');
+            } else {
+                celular = celular.replace(/(\d{4})(\d)/, '$1-$2');
+            }
+            this.value = celular.slice(0, 15); // Limita o tamanho máximo para o formato
+        }
+    });
+</script>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .container {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        width: 400px;
+    }
+
+    .container p {
+        margin-bottom: 20px;
+    }
+    a {
+        display: block;
+        width: 2.5rem;
+        margin-bottom: 15px;
+        padding: 10px;
+        background-color: #007bff;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+    }
+
+    a:hover {
+        background-color: #0056b3;
+    }
+    form div {
+        margin-bottom: 20px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="number"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    #enviar {
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    #enviar:hover {
+        background-color: #0056b3;
+    }
+
+    p.required {
+        display: inline;
+        color: red;
+        margin-left: 5px;
+    }
+</style>
+
+</html>
